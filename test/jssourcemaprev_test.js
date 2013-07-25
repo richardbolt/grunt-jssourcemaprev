@@ -25,16 +25,8 @@ var grunt = require('grunt');
 exports.jssourcemaprev = {
   setUp: function(done) {
     // Setup here if necessary
-    //grunt.file.copy('test/fixtures/testing.js', 'tmp/testing.ace321a8.js');
-    //grunt.file.copy('test/fixtures/testing-sourcemap.json', 'tmp/testing-sourcemap.json');
-    //grunt.file.copy('test/fixtures/src/app.js', 'tmp/src/app.js');
     done();
-  },
-  tearDown: function (callback) {
-    // Clean up
-
-    callback();
-  },
+  }
   default_options: function(test) {
     test.expect(5);
 
