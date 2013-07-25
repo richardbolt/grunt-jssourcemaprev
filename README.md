@@ -1,4 +1,4 @@
-# grunt-jssourcemaprev
+# grunt-jssourcemaprev [![Build Status](https://travis-ci.org/richardbolt/grunt-jssourcemaprev.png?branch=master)](https://travis-ci.org/richardbolt/grunt-jssourcemaprev)
 
 > Change a sourcemap to match the name of a revved js file, and move the source locations to a revved folder so forever caching can be used.
 
