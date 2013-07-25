@@ -67,8 +67,10 @@ module.exports = function(grunt) {
             { cwd: srcPath }
           );
         srcFiles.forEach(function(f){
-          grunt.file.copy(f.src, f.dest);
-          moved += 1;
+          if (f.src !== f.dest) {
+            grunt.file.copy(f.src, f.dest);
+            moved += 1;
+          }
         });
         // Remove srcFiles (since we moved it already) according to options.
         if (moved) {
