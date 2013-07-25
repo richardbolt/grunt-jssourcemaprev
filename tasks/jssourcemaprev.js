@@ -22,16 +22,16 @@ module.exports = function(grunt) {
   // 4. The sourceRoot attribute in the sourcemap itself to point to the moved source files.
   grunt.registerMultiTask('jssourcemaprev', 'Rename a js sourcemap and all related source files.', function() {
       var self = this,
-          options = self.options({
-            moveSrc: true
-          });
+        options = self.options({
+          moveSrc: false
+        });
 
     self.filesSrc.forEach(function (file) {
       var js = grunt.file.read(file);
       var re = /^\/\/[@|#]\ssourceMappingURL\=([\/a-zA-Z0-9_\-\.]+)$/gm;
       var match = js.match(re);
       if (!match) {
-          return;
+        return;
       }
 
       // Find the sourceMappingUrl based on match.
@@ -59,13 +59,13 @@ module.exports = function(grunt) {
       if (sourceMap.sourceRoot) {
         // 3. Move the source files location based on sourceRoot
         var srcPath = path.join(path.dirname(newMapFile), sourceMap.sourceRoot),
-            newSrcPath = path.join(path.dirname(file), path.basename(file, path.extname(file))),
-            moved = 0,
-            srcFiles = grunt.file.expandMapping(
-              '**/*.*', // src
-              path.join(path.dirname(file), path.basename(file, path.extname(file))), // dest
-              { cwd: srcPath }
-            );
+          newSrcPath = path.join(path.dirname(file), path.basename(file, path.extname(file))),
+          moved = 0,
+          srcFiles = grunt.file.expandMapping(
+            '**/*.*', // src
+            path.join(path.dirname(file), path.basename(file, path.extname(file))), // dest
+            { cwd: srcPath }
+          );
         srcFiles.forEach(function(f){
           grunt.file.copy(f.src, f.dest);
           moved += 1;
