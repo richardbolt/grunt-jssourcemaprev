@@ -20,16 +20,20 @@ grunt.loadNpmTasks('grunt-jssourcemaprev');
 ## The "jssourcemaprev" task
 
 ### Overview
+Revision a sourcemap and source files so they match an already revisioned and minified js file(s). You can revision the js assets with a plugin such as [grunt-filerev](https://github.com/yeoman/grunt-filerev). This is useful if you want to be able to debug on a live system where static files are cached such as with a CDN.
+
 In your project's Gruntfile, add a section named `jssourcemaprev` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
   jssourcemaprev: {
     options: {
-      // Task-specific options go here.
+      moveSrc: false // If true we move the src files, else we copy them. Copy is the default.
     },
     your_target: {
       // Target-specific file lists and/or options go here.
+      // Note that dest and ext will be ignored.
+      // we are specifying js file locations which will be updated in place.
     },
   },
 })
@@ -37,46 +41,48 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.moveSrc
+Type: `Boolean`
+Default value: `false`
 
-A string value that is used to do something with whatever.
+If `true` we move the src files, else we copy them. Copy is the default (`false`).
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used to do take a peek inside files matching `public/js/testing.*.js`. It will:
+
+* Search for a sourceMappingURL in the file
+* Check if it can find the source map file
+* Change the source map name to match the js file name (sans the extension)
+* Update the js file to point to the renamed source map
+* Copy the files in the `sourceDir` attribute of the source map to a directory matching
+  the name of the js file (sans the extension).
+* Update the source map sourceDir attribute to point to the new location.
 
 ```js
 grunt.initConfig({
   jssourcemaprev: {
     options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      src: ['public/js/testing.*.js'],
     },
   },
 })
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, the same happens as in the default example except the files in the `sourceDir` attribute of the source map are moved, not copied, to the location described in default options.
 
 ```js
 grunt.initConfig({
   jssourcemaprev: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      moveSrc: true,
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      src: ['public/js/testing.*.js'],
     },
   },
 })
