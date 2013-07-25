@@ -26,7 +26,7 @@ exports.jssourcemaprev = {
   setUp: function(done) {
     // Setup here if necessary
     done();
-  }
+  },
   default_options: function(test) {
     test.expect(5);
 
