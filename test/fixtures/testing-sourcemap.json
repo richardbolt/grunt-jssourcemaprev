@@ -1,0 +1,7 @@
+{
+    "version": 3,
+    "file": "js/testing.js",
+    "sources": ["app.js"],
+    "mappings":"AAAAA,BBBB,CCCC,DDDD,EEEE",
+    "sourceRoot": "src/"
+}

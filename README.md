@@ -57,9 +57,9 @@ In this example, the default options are used to do take a peek inside files mat
 * Check if it can find the source map file
 * Change the source map name to match the js file name (sans the extension)
 * Update the js file to point to the renamed source map
-* Copy the files in the `sourceDir` attribute of the source map to a directory matching
+* Copy the files in the `sourceRoot` attribute of the source map to a directory matching
   the name of the js file (sans the extension).
-* Update the source map sourceDir attribute to point to the new location.
+* Update the source map `sourceRoot` attribute to point to the new location.
 
 ```js
 grunt.initConfig({
@@ -73,7 +73,7 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, the same happens as in the default example except the files in the `sourceDir` attribute of the source map are moved, not copied, to the location described in default options.
+In this example, the same happens as in the default example except the files in the `sourceRoot` attribute of the source map are moved, not copied, to the location described in default options.
 
 ```js
 grunt.initConfig({
