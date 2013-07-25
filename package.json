@@ -1,0 +1,42 @@
+{
+  "name": "grunt-jssourcemaprev",
+  "description": "Change a sourcemap to match the name of a revved js file, and move the source locations to a revved folder so forever caching can be used.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/richardbolt/grunt-jssourcemaprev",
+  "author": {
+    "name": "Richard Bolt",
+    "email": "richard@richardbolt.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/richardbolt/grunt-jssourcemaprev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/richardbolt/grunt-jssourcemaprev/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/richardbolt/grunt-jssourcemaprev/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
